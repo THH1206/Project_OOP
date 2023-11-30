@@ -12,7 +12,8 @@ class StudentManagementSystem {
     private Scanner scanner = new Scanner(System.in);
 
     public void saveToFileAtAll() {
-        String filePath = "D:/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
+//        String filePath = "D:/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
+        String filePath = "C:/Java/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
             for (Student student : students) {
@@ -25,7 +26,8 @@ class StudentManagementSystem {
     }
 
     public void saveToFileAtEnd() {
-        String filePath = "D:/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
+//        String filePath = "D:/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
+        String filePath = "C:/Java/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath, true))) {
             for (Student student : students) {
@@ -37,9 +39,9 @@ class StudentManagementSystem {
         }
     }
 
-
     public void loadFromFile() {
-        String filePath = "D:/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
+//        String filePath = "D:/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
+        String filePath = "C:/Java/Project_OOP/QuanLySinhVien/src/ListStudents.txt";
 
         List<Student> loadedStudents = new ArrayList<>();
         Path path = Paths.get(filePath);
@@ -113,11 +115,11 @@ class StudentManagementSystem {
 
         if (studentFound) {
             // Student found, allow further updates if needed
-            System.out.print("Enter new first name: ");
-            String newLastName = scanner.nextLine();
-            System.out.print("Enter major: ");
-            String newFirstName = scanner.nextLine();
             System.out.print("Enter new last name: ");
+            String newLastName = scanner.nextLine();
+            System.out.print("Enter new first name: ");
+            String newFirstName = scanner.nextLine();
+            System.out.print("Enter major: ");
             String newMajor = scanner.nextLine();
             System.out.print("Enter new GPA: ");
             double newGPA = scanner.nextDouble();
@@ -152,9 +154,19 @@ class StudentManagementSystem {
         System.out.println("+--------------------------------------------------------------+");
     }
 
-    public void sortStudentsByName() {
+    public void sortStudentsByFirstName() {
         students.sort(Comparator.comparing(Student::getFirstName));
-        System.out.println("Students sorted by name.");
+        System.out.println("Students sorted by first name.");
+    }
+
+    public void sortStudentsByLastName() {
+        students.sort(Comparator.comparing(Student::getLastName));
+        System.out.println("Students sorted by last name.");
+    }
+
+    public void sortStudentsBySID() {
+        students.sort(Comparator.comparing(Student::getSid));
+        System.out.println("Students sorted by SID.");
     }
 
     public void sortStudentsByGPA() {
@@ -179,8 +191,6 @@ class StudentManagementSystem {
 
         System.out.println("+--------------------------------------------------------------+");
     }
-
-
 
     public boolean isStudentListEmpty() {
         return students.isEmpty();

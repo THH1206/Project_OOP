@@ -12,14 +12,12 @@ public class Main {
 
             System.out.println("1. Add new student\t\t\t\t\t2. Delete student by id");
             System.out.println("3. Update student by id\t\t\t\t4. List all students");
-            System.out.println("5. Find students by major\t\t\t6. Find students by id");
-            System.out.println("7. Sort students by id\t\t\t\t8. Sort students by GPA");
-            System.out.println("9. Sort students by first name\t\t10. Sort students by last name");
-            System.out.println("11. Find student with highest GPA\t\t\t");
-            System.out.println("20. Save to file\t\t\t\t\t21. Load from file");
-            System.out.println("0. Exit");
+            System.out.println("5. Sort students by id\t\t\t\t6. Sort students by GPA");
+            System.out.println("7. Sort students by first name\t\t8. Sort students by last name");
+            System.out.println("9. Find student with highest GPA\t10. Save to file");
+            System.out.println("11. Load from file\t\t\t\t\t0. Exit");
 
-            System.out.print("Enter your choice (0-9): ");
+            System.out.print("Enter your choice (0-11): ");
 
             choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
@@ -38,15 +36,21 @@ public class Main {
                     system.listAllStudents();
                     break;
                 case 5:
-                    system.sortStudentsByName();
+                    system.sortStudentsBySID();
                     break;
                 case 6:
                     system.sortStudentsByGPA();
                     break;
                 case 7:
-                    system.findStudentWithHighestGPA();
+                    system.sortStudentsByFirstName();
                     break;
                 case 8:
+                    system.sortStudentsByLastName();
+                    break;
+                case 9:
+                    system.findStudentWithHighestGPA();
+                    break;
+                case 10:
                     if (system.isStudentListEmpty()) {
                         System.out.println("The student list is empty. Do you want to continue? (y/n): ");
                         String continueChoice = scanner.nextLine().toLowerCase();
@@ -66,7 +70,7 @@ public class Main {
                     }
                     break;
 
-                case 9:
+                case 11:
                     system.loadFromFile();
                     break;
                 default:
